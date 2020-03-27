@@ -17,9 +17,11 @@
                 </button>
             </div>
             <div class="col-lg-6 mt-5">
-                <p class="date-time-display">
-
-                </p>
+                <p class="badge badge-primary badge0"></p>
+                <p class="badge badge-success badge1"></p>
+                <p class="badge badge-warning badge2"></p>
+                <p class="badge badge-info badge3"></p>
+                <p class="badge badge-danger badge4"></p>
             </div>
         </div>
     </div>
@@ -33,7 +35,13 @@
                     url: 'index.php',
                     // method:'GET',
                     success:function(response){
-                        $(".date-time-display").html(response);
+                        var record = JSON.parse(response);
+                        console.log(record);
+                        
+                        for (let i = 0; i < record.length; i++) {
+                            $(".badge"+[i]).empty();
+                            $(".badge"+[i]).append(record[i]);                            
+                        }
                     }
                 });
             });
