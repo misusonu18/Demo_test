@@ -32,8 +32,7 @@
         function randomFunction() {
             axios.get('index.php').then(function(response){
                 var record = response.data;
-                console.log(record);
-                
+                                
                 document.getElementById('data').innerHTML = '';
                 for (let i = 0; i < record.length; i++) {
                     document.getElementById('data').innerHTML += '<p class = "badge badge-primary mr-2" id="badge">'+ record[i] +'</p>';
