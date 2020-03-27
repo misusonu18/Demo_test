@@ -12,40 +12,34 @@
             <div class="col-lg-6 mt-5">
                 <button class="btn btn-primary"
                     id="date_time"
+                    onclick="randomFunction();"
                 >
                     Ramdom Number
                 </button>
             </div>
             <div class="col-lg-6 mt-5">
-                <p class="badge badge-primary badge0"></p>
-                <p class="badge badge-success badge1"></p>
-                <p class="badge badge-warning badge2"></p>
-                <p class="badge badge-info badge3"></p>
-                <p class="badge badge-danger badge4"></p>
+                <p class="badge badge-primary" id="badge0"></p>
+                <p class="badge badge-success" id="badge1"></p>
+                <p class="badge badge-warning" id="badge2"></p>
+                <p class="badge badge-info" id="badge3"></p>
+                <p class="badge badge-danger" id="badge4"></p>
             </div>
         </div>
     </div>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        $(function(){
-            $("#date_time").click(function(){
-                $.ajax({
-                    url: 'index.php',
-                    // method:'GET',
-                    success:function(response){
-                        var record = JSON.parse(response);
-                        console.log(record);
+        function randomFunction() {
+            axios.get('index.php').then(function(response){
+                var record = response.data;
                         
-                        for (let i = 0; i < record.length; i++) {
-                            $(".badge"+[i]).empty();
-                            $(".badge"+[i]).append(record[i]);                            
-                        }
-                    }
-                });
+                for (let i = 0; i < record.length; i++) {
+                    document.getElementById("badge"+[i]).innerHTML = record[i];
+                }
+            }).catch(function(error){
+                alertify.error(error);
             });
-        });
+        }
     </script>
 </body>
 </html>
