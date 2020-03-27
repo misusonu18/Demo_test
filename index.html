@@ -18,11 +18,7 @@
                 </button>
             </div>
             <div class="col-lg-6 mt-5 " id="data">
-                <p class="badge badge-primary" id="badge0"></p>
-                <p class="badge badge-success" id="badge1"></p>
-                <p class="badge badge-warning" id="badge2"></p>
-                <p class="badge badge-info" id="badge3"></p>
-                <p class="badge badge-danger" id="badge4"></p>
+            
             </div>
         </div>
     </div>
@@ -32,10 +28,10 @@
         function randomFunction() {
             axios.get('index.php').then(function(response){
                 var record = response.data;
-                                
+
                 document.getElementById('data').innerHTML = '';
                 for (let i = 0; i < record.length; i++) {
-                    document.getElementById('data').innerHTML += '<p class = "badge badge-primary mr-2" id="badge">'+ record[i] +'</p>';
+                    document.getElementById('data').innerHTML += '<p class="badge badge-primary mr-2" id="badge">'+ record[i] +'</p>';
                 }
             }).catch(function(error){
                 alertify.error(error);
