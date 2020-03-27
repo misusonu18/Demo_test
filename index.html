@@ -13,7 +13,7 @@
                 <button class="btn btn-primary"
                     id="date_time"
                 >
-                    Date And Time
+                    Ramdom Number
                 </button>
             </div>
             <div class="col-lg-6 mt-5">
@@ -31,7 +31,7 @@
             $("#date_time").click(function(){
                 $.ajax({
                     url: 'index.php',
-                    method:'GET',
+                    // method:'GET',
                     success:function(response){
                         $(".date-time-display").html(response);
                     }
