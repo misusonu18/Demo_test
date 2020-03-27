@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Time Date Display</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mt-5">
+                <button class="btn btn-primary"
+                    id="date_time"
+                >
+                    Date And Time
+                </button>
+            </div>
+            <div class="col-lg-6 mt-5">
+                <p class="date-time-display">
+
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            $("#date_time").click(function(){
+                $.ajax({
+                    url: 'index.php',
+                    method:'GET',
+                    success:function(response){
+                        $(".date-time-display").html(response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
