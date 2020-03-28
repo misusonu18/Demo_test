@@ -17,10 +17,10 @@
                     Ramdom Number
                 </button>
             </div>
+                    <template id="data">
+                        <p class="badge badge-info mr-2 badge-data"></p>
+                    </template>
             <div class="col-lg-6 mt-5 data" id="div_data">
-                <template id="data">
-                    <p class="badge badge-info mr-2 badge-data"></p>
-                </template>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 var htmldata = document.getElementsByTagName('template')[0];
                 var p = htmldata.content.querySelector(".badge-data");
 
-                p.content = "";
+                document.getElementById("div_data").innerHTML = "";
                 for (let i = 0; i < record.length; i++) {
                     a = document.importNode(p, true);
                     a.textContent += record[i];
