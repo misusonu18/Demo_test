@@ -17,24 +17,31 @@
                     Ramdom Number
                 </button>
             </div>
-            <div class="col-lg-6 mt-5 " id="data">
-            
+            <div class="col-lg-6 mt-5 data" id="div_data">
+                <template id="data">
+                    <p class="badge badge-info mr-2 badge-data"></p>
+                </template>
             </div>
         </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        var a;
         function randomFunction() {
             axios.get('index.php').then(function(response){
                 var record = response.data;
+                var htmldata = document.getElementsByTagName('template')[0];
+                var p = htmldata.content.querySelector(".badge-data");
 
-                document.getElementById('data').innerHTML = '';
+                p.content = "";
                 for (let i = 0; i < record.length; i++) {
-                    document.getElementById('data').innerHTML += '<p class="badge badge-primary mr-2" id="badge">'+ record[i] +'</p>';
-                }
+                    a = document.importNode(p, true);
+                    a.textContent += record[i];
+                    document.getElementById('div_data').append(a);
+                } 
             }).catch(function(error){
-                alertify.error(error);
+                console.log(error);
             });
         }
     </script>
